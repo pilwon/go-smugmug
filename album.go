@@ -1,7 +1,10 @@
 package smugmug
 
 import (
+	"encoding/json"
+	"net/http"
 	"net/url"
+	"strings"
 	"time"
 )
 
@@ -14,15 +17,86 @@ func NewAlbumsService(s *Service) *AlbumsService {
 	return r
 }
 
+func (r *AlbumsService) Get(id string) *AlbumsGetCall {
+	c := &AlbumsGetCall{s: r.s, urlParams: url.Values{}}
+	c.id = id
+	return c
+}
+
+type AlbumsServiceResponse struct {
+	Code     int
+	Message  string
+	Response struct {
+		ServiceResponse
+		Album *json.RawMessage
+	}
+	Expansions map[string]*json.RawMessage `json:",omitempty"`
+}
+
 type AlbumsGetCall struct {
+	id string
+
 	s         *Service
-	id        string
 	urlParams url.Values
 }
 
-func (r *AlbumsService) Get(id string) *AlbumsGetCall {
-	c := &AlbumsGetCall{s: r.s}
+func (c *AlbumsGetCall) Expand(expansions []string) *AlbumsGetCall {
+	c.urlParams.Set("_expand", strings.Join(expansions, ","))
 	return c
+}
+
+func (c *AlbumsGetCall) Filter(filter []string) *AlbumsGetCall {
+	c.urlParams.Set("_filter", strings.Join(filter, ","))
+	return c
+}
+
+func (c *AlbumsGetCall) doRequest() (*http.Response, error) {
+	urls := resolveRelative(c.s.BasePath, "album/"+c.id)
+	urls += "?" + encodeURLParams(c.urlParams)
+	req, _ := http.NewRequest("GET", urls, nil)
+	c.s.setHeaders(req)
+	debugRequest(req)
+	return c.s.client.Do(req)
+}
+
+func (c *AlbumsGetCall) Do() (*AlbumsGetResponse, error) {
+	res, err := c.doRequest()
+	if err != nil {
+		return nil, err
+	}
+	debugResponse(res)
+	defer closeBody(res)
+	if err := checkResponse(res); err != nil {
+		return nil, err
+	}
+	albumsRes := &AlbumsServiceResponse{}
+	if err := json.NewDecoder(res.Body).Decode(&albumsRes); err != nil {
+		return nil, err
+	}
+	album := &Album{}
+	if err := json.Unmarshal(*albumsRes.Response.Album, &album); err != nil {
+		return nil, err
+	}
+	exp, err := unmarshallExpansions(album.URIs, albumsRes.Expansions)
+	if err != nil {
+		return nil, err
+	}
+	ret := &AlbumsGetResponse{
+		Album: album,
+		ServerResponse: ServerResponse{
+			Header:         res.Header,
+			HTTPStatusCode: res.StatusCode,
+		},
+	}
+	for name, v := range exp {
+		switch name {
+		case "Node":
+			ret.Node = v.(*Node)
+		case "User":
+			ret.User = v.(*User)
+		}
+	}
+	return ret, nil
 }
 
 type AlbumsGetResponse struct {
@@ -30,7 +104,7 @@ type AlbumsGetResponse struct {
 
 	// AlbumDownload
 	// AlbumGeoMedia
-	// AlbumHighlightImage
+	// AlbumHighlightImage // deprecated
 	// AlbumImages
 	// AlbumPopularMedia
 	// AlbumPrices
@@ -38,14 +112,14 @@ type AlbumsGetResponse struct {
 	// ApplyAlbumTemplate
 	// CollectImages
 	// DeleteAlbumImages
-	// Folder
+	// Folder // deprecated
 	// HighlightImage
 	// MoveAlbumImages
-	// Node
-	// ParentFolders
+	Node *Node
+	// ParentFolders // deprecated
 	// SortAlbumImages
 	// UploadFromUri
-	// User
+	User *User
 
 	ServerResponse `json:"-"`
 }
