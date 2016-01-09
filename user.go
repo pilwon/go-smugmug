@@ -144,27 +144,27 @@ type UsersGetResponse struct {
 }
 
 type User struct {
-	AccountStatus     string
-	Domain            string
-	DomainOnly        string
-	FirstName         string
-	FriendsView       bool
-	ImageCount        int
-	IsTrial           bool
-	LastName          string
-	Name              string
-	NickName          string
-	Plan              string
-	QuickShare        bool
-	RefTag            string
-	SortBy            string
-	TotalAccountSize  string
-	TotalUploadedSize string
-	ViewPassHint      string
-	ViewPassword      string
+	AccountStatus     string `json:",omitempty"`
+	Domain            string `json:",omitempty"`
+	DomainOnly        string `json:",omitempty"`
+	FirstName         string `json:",omitempty"`
+	FriendsView       bool   `json:",omitempty"`
+	ImageCount        int    `json:",omitempty"`
+	IsTrial           bool   `json:",omitempty"`
+	LastName          string `json:",omitempty"`
+	Name              string `json:",omitempty"`
+	NickName          string `json:",omitempty"`
+	Plan              string `json:",omitempty"`
+	QuickShare        bool   `json:",omitempty"`
+	RefTag            string `json:",omitempty"`
+	SortBy            string `json:",omitempty"`
+	TotalAccountSize  string `json:",omitempty"`
+	TotalUploadedSize string `json:",omitempty"`
+	ViewPassHint      string `json:",omitempty"`
+	ViewPassword      string `json:",omitempty"`
 
-	ResponseLevel string
-	URI           string `json:"Uri"`
-	URIs          *URIs  `json:"Uris"`
-	WebURI        string `json:"WebUri"`
+	ResponseLevel string `json:",omitempty"`
+	URI           string `json:"Uri,omitempty"`
+	URIs          *URIs  `json:"Uris,omitempty"`
+	WebURI        string `json:"WebUri,omitempty"`
 }

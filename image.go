@@ -130,191 +130,191 @@ type ImagesGetResponse struct {
 }
 
 type Image struct {
-	Altitude        int
-	ArchivedMD5     string
-	ArchivedSize    int
-	ArchivedURI     string `json:"ArchivedUri"`
-	CanEdit         bool
-	Caption         string
-	Collectable     bool
-	Date            *time.Time
-	EZProject       bool
-	FileName        string
-	Format          string
-	FormattedValues *FormattedValues
-	Hidden          bool
-	ImageKey        string
-	IsArchive       bool
-	IsVideo         bool
-	KeywordArray    []string
-	Keywords        string
-	LastUpdated     *time.Time
-	Latitude        string
-	Longitude       string
-	OriginalHeight  int
-	OriginalSize    int
-	OriginalWidth   int
-	Processing      bool
-	Protected       bool
-	ThumbnailURL    string `json:"ThumbnailUrl"`
-	Title           string
-	UploadKey       string
-	Watermarked     bool
+	Altitude        int              `json:",omitempty"`
+	ArchivedMD5     string           `json:",omitempty"`
+	ArchivedSize    int              `json:",omitempty"`
+	ArchivedURI     string           `json:"ArchivedUri,omitempty"`
+	CanEdit         bool             `json:",omitempty"`
+	Caption         string           `json:",omitempty"`
+	Collectable     bool             `json:",omitempty"`
+	Date            *time.Time       `json:",omitempty"`
+	EZProject       bool             `json:",omitempty"`
+	FileName        string           `json:",omitempty"`
+	Format          string           `json:",omitempty"`
+	FormattedValues *FormattedValues `json:",omitempty"`
+	Hidden          bool             `json:",omitempty"`
+	ImageKey        string           `json:",omitempty"`
+	IsArchive       bool             `json:",omitempty"`
+	IsVideo         bool             `json:",omitempty"`
+	KeywordArray    []string         `json:",omitempty"`
+	Keywords        string           `json:",omitempty"`
+	LastUpdated     *time.Time       `json:",omitempty"`
+	Latitude        string           `json:",omitempty"`
+	Longitude       string           `json:",omitempty"`
+	OriginalHeight  int              `json:",omitempty"`
+	OriginalSize    int              `json:",omitempty"`
+	OriginalWidth   int              `json:",omitempty"`
+	Processing      bool             `json:",omitempty"`
+	Protected       bool             `json:",omitempty"`
+	ThumbnailURL    string           `json:"ThumbnailUrl,omitempty"`
+	Title           string           `json:",omitempty"`
+	UploadKey       string           `json:",omitempty"`
+	Watermarked     bool             `json:",omitempty"`
 
 	ResponseLevel string
-	URI           string `json:"Uri"`
-	URIs          *URIs  `json:"Uris"`
-	WebURI        string `json:"WebUri"`
+	URI           string `json:"Uri,omitempty"`
+	URIs          *URIs  `json:"Uris,omitempty"`
+	WebURI        string `json:"WebUri,omitempty"`
 }
 
 type ImageDownload struct {
-	URL string `json:"Url"`
+	URL string `json:"Url,omitempty"`
 
-	URI            string `json:"Uri"`
-	URIDescription string `json:"UriDescription"`
+	URI            string `json:"Uri,omitempty"`
+	URIDescription string `json:"UriDescription,omitempty"`
 }
 
 type ImageMetadata struct {
-	Altitude               string
-	AltitudeReference      string
-	Aperture               float64
-	AudioCodec             string
-	Author                 string
-	AuthorTitle            string
-	Brightness             string
-	Caption                string
-	Category               string
-	CircleOfConfusion      string
-	City                   string
-	ColorSpace             string
-	CompressedBitsPerPixel string
-	Contrast               string
-	Copyright              string
-	CopyrightFlag          string
-	CopyrightURL           string `json:"CopyrightUrl"`
-	Country                string
-	CountryCode            string
-	CreatorContactInfo     string
-	Credit                 string
-	DateCreated            string // *time.Time
-	DateDigitized          string // *time.Time
-	DateTimeCreated        string // *time.Time
-	DateTimeModified       string // *time.Time
-	DepthOfField           string
-	DigitalZoomRatio       float64
-	Duration               string
-	Exposure               string
-	ExposureCompensation   string
-	ExposureMode           string
-	ExposureProgram        string
-	FieldOfView            string
-	Flash                  string
-	FocalLength            string
-	FocalLength35mm        string
-	GainControl            string
-	Headline               string
-	HyperfocalDistance     string
-	ISO                    int
-	Keywords               string
-	Latitude               float64
-	LatitudeReference      string
-	Lens                   string
-	LensSerialNumber       string
-	LightSource            string
-	Longitude              float64
-	LongitudeReference     string
-	Make                   string
-	Metering               string
-	MicroDateTimeCreated   string // *time.Time
-	MicroDateTimeDigitized string // *time.Time
-	Model                  string
-	NormalizedLightValue   float64
-	Rating                 string
-	Saturation             string
-	ScaleFactor            string
-	SceneCaptureType       string
-	SensingMethod          string
-	SerialNumber           string
-	Sharpness              string
-	Software               string
-	Source                 string
-	SpecialInstructions    string
-	State                  string
-	SubjectDistance        string
-	SubjectRange           string
-	SupplementalCategories string
-	TimeCreated            string
-	Title                  string
-	TransmissionReference  string
-	UserComment            string
-	VideoCodec             string
-	WhiteBalance           string
-	WriterEditor           string
+	Altitude               string  `json:",omitempty"`
+	AltitudeReference      string  `json:",omitempty"`
+	Aperture               float64 `json:",omitempty"`
+	AudioCodec             string  `json:",omitempty"`
+	Author                 string  `json:",omitempty"`
+	AuthorTitle            string  `json:",omitempty"`
+	Brightness             string  `json:",omitempty"`
+	Caption                string  `json:",omitempty"`
+	Category               string  `json:",omitempty"`
+	CircleOfConfusion      string  `json:",omitempty"`
+	City                   string  `json:",omitempty"`
+	ColorSpace             string  `json:",omitempty"`
+	CompressedBitsPerPixel string  `json:",omitempty"`
+	Contrast               string  `json:",omitempty"`
+	Copyright              string  `json:",omitempty"`
+	CopyrightFlag          string  `json:",omitempty"`
+	CopyrightURL           string  `json:"CopyrightUrl"`
+	Country                string  `json:",omitempty"`
+	CountryCode            string  `json:",omitempty"`
+	CreatorContactInfo     string  `json:",omitempty"`
+	Credit                 string  `json:",omitempty"`
+	DateCreated            string  `json:",omitempty"` // *time.Time
+	DateDigitized          string  `json:",omitempty"` // *time.Time
+	DateTimeCreated        string  `json:",omitempty"` // *time.Time
+	DateTimeModified       string  `json:",omitempty"` // *time.Time
+	DepthOfField           string  `json:",omitempty"`
+	DigitalZoomRatio       float64 `json:",omitempty"`
+	Duration               string  `json:",omitempty"`
+	Exposure               string  `json:",omitempty"`
+	ExposureCompensation   string  `json:",omitempty"`
+	ExposureMode           string  `json:",omitempty"`
+	ExposureProgram        string  `json:",omitempty"`
+	FieldOfView            string  `json:",omitempty"`
+	Flash                  string  `json:",omitempty"`
+	FocalLength            string  `json:",omitempty"`
+	FocalLength35mm        string  `json:",omitempty"`
+	GainControl            string  `json:",omitempty"`
+	Headline               string  `json:",omitempty"`
+	HyperfocalDistance     string  `json:",omitempty"`
+	ISO                    int     `json:",omitempty"`
+	Keywords               string  `json:",omitempty"`
+	Latitude               float64 `json:",omitempty"`
+	LatitudeReference      string  `json:",omitempty"`
+	Lens                   string  `json:",omitempty"`
+	LensSerialNumber       string  `json:",omitempty"`
+	LightSource            string  `json:",omitempty"`
+	Longitude              float64 `json:",omitempty"`
+	LongitudeReference     string  `json:",omitempty"`
+	Make                   string  `json:",omitempty"`
+	Metering               string  `json:",omitempty"`
+	MicroDateTimeCreated   string  `json:",omitempty"` // *time.Time
+	MicroDateTimeDigitized string  `json:",omitempty"` // *time.Time
+	Model                  string  `json:",omitempty"`
+	NormalizedLightValue   float64 `json:",omitempty"`
+	Rating                 string  `json:",omitempty"`
+	Saturation             string  `json:",omitempty"`
+	ScaleFactor            string  `json:",omitempty"`
+	SceneCaptureType       string  `json:",omitempty"`
+	SensingMethod          string  `json:",omitempty"`
+	SerialNumber           string  `json:",omitempty"`
+	Sharpness              string  `json:",omitempty"`
+	Software               string  `json:",omitempty"`
+	Source                 string  `json:",omitempty"`
+	SpecialInstructions    string  `json:",omitempty"`
+	State                  string  `json:",omitempty"`
+	SubjectDistance        string  `json:",omitempty"`
+	SubjectRange           string  `json:",omitempty"`
+	SupplementalCategories string  `json:",omitempty"`
+	TimeCreated            string  `json:",omitempty"`
+	Title                  string  `json:",omitempty"`
+	TransmissionReference  string  `json:",omitempty"`
+	UserComment            string  `json:",omitempty"`
+	VideoCodec             string  `json:",omitempty"`
+	WhiteBalance           string  `json:",omitempty"`
+	WriterEditor           string  `json:",omitempty"`
 
-	ResponseLevel  string
-	URI            string `json:"Uri"`
-	URIDescription string `json:"UriDescription"`
+	ResponseLevel  string `json:",omitempty"`
+	URI            string `json:"Uri,omitempty"`
+	URIDescription string `json:"UriDescription,omitempty"`
 }
 
 type CatalogSkuPrice struct {
-	Currency string
-	Price    float64
+	Currency string  `json:",omitempty"`
+	Price    float64 `json:",omitempty"`
 
-	ResponseLevel  string
-	URI            string `json:"Uri"`
-	URIDescription string `json:"UriDescription"`
+	ResponseLevel  string `json:",omitempty"`
+	URI            string `json:"Uri,omitempty"`
+	URIDescription string `json:"UriDescription,omitempty"`
 }
 
 type ImageSize struct {
-	URL    string `json:"Url"`
-	Ext    string
-	Height int
-	Width  int
-	Size   int
+	URL    string `json:"Url,omitempty"`
+	Ext    string `json:",omitempty"`
+	Height int    `json:",omitempty"`
+	Width  int    `json:",omitempty"`
+	Size   int    `json:",omitempty"`
 }
 
 type ImageSizeDetails struct {
-	ImageSizeLarge    *ImageSize
-	ImageSizeMedium   *ImageSize
-	ImageSizeOriginal *ImageSize
-	ImageSizeSmall    *ImageSize
-	ImageSizeThumb    *ImageSize
-	ImageSizeTiny     *ImageSize
-	ImageSizeX2Large  *ImageSize
-	ImageSizeX3Large  *ImageSize
-	ImageSizeXLarge   *ImageSize
-	ImageURLTemplate  string `json:"ImageUrlTemplate"`
-	UsableSizes       []string
+	ImageSizeLarge    *ImageSize `json:",omitempty"`
+	ImageSizeMedium   *ImageSize `json:",omitempty"`
+	ImageSizeOriginal *ImageSize `json:",omitempty"`
+	ImageSizeSmall    *ImageSize `json:",omitempty"`
+	ImageSizeThumb    *ImageSize `json:",omitempty"`
+	ImageSizeTiny     *ImageSize `json:",omitempty"`
+	ImageSizeX2Large  *ImageSize `json:",omitempty"`
+	ImageSizeX3Large  *ImageSize `json:",omitempty"`
+	ImageSizeXLarge   *ImageSize `json:",omitempty"`
+	ImageURLTemplate  string     `json:"ImageUrlTemplate,omitempty"`
+	UsableSizes       []string   `json:",omitempty"`
 
-	URI            string `json:"Uri"`
-	URIDescription string `json:"UriDescription"`
+	URI            string `json:"Uri,omitempty"`
+	URIDescription string `json:"UriDescription,omitempty"`
 }
 
 type ImageSizes struct {
-	LargeImageURL    string `json:"LargeImageUrl"`
-	LargestImageURL  string `json:"LargestImageUrl"`
-	MediumImageURL   string `json:"MediumImageUrl"`
-	OriginalImageURL string `json:"OriginalImageUrl"`
-	SmallImageURL    string `json:"SmallImageUrl"`
-	ThumbImageURL    string `json:"ThumbImageUrl"`
-	TinyImageURL     string `json:"TinyImageUrl"`
-	X2LargeImageURL  string `json:"X2LargeImageUrl"`
-	X3LargeImageURL  string `json:"X3LargeImageUrl"`
-	XLargeImageURL   string `json:"XLargeImageUrl"`
+	LargeImageURL    string `json:"LargeImageUrl,omitempty"`
+	LargestImageURL  string `json:"LargestImageUrl,omitempty"`
+	MediumImageURL   string `json:"MediumImageUrl,omitempty"`
+	OriginalImageURL string `json:"OriginalImageUrl,omitempty"`
+	SmallImageURL    string `json:"SmallImageUrl,omitempty"`
+	ThumbImageURL    string `json:"ThumbImageUrl,omitempty"`
+	TinyImageURL     string `json:"TinyImageUrl,omitempty"`
+	X2LargeImageURL  string `json:"X2LargeImageUrl,omitempty"`
+	X3LargeImageURL  string `json:"X3LargeImageUrl,omitempty"`
+	XLargeImageURL   string `json:"XLargeImageUrl,omitempty"`
 
-	URI            string `json:"Uri"`
-	URIDescription string `json:"UriDescription"`
+	URI            string `json:"Uri,omitempty"`
+	URIDescription string `json:"UriDescription,omitempty"`
 }
 
 type LargestImage struct {
-	Ext         string
-	Height      int
-	Size        int
-	URL         string `json:"Url"`
-	Usable      bool
-	Watermarked bool
-	Width       int
+	Ext         string `json:",omitempty"`
+	Height      int    `json:",omitempty"`
+	Size        int    `json:",omitempty"`
+	URL         string `json:"Url,omitempty"`
+	Usable      bool   `json:",omitempty"`
+	Watermarked bool   `json:",omitempty"`
+	Width       int    `json:",omitempty"`
 
-	URI            string `json:"Uri"`
-	URIDescription string `json:"UriDescription"`
+	URI            string `json:"Uri,omitempty"`
+	URIDescription string `json:"UriDescription,omitempty"`
 }
