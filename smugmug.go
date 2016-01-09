@@ -137,7 +137,7 @@ func unmarshallExpansions(uris *URIs, exp map[string]*json.RawMessage) (map[stri
 	for name, uri := range *uris {
 		u := parseURI(uri)
 		switch name {
-		case "ImageAlbum":
+		case "Album", "ImageAlbum":
 			if value, ok := exp[u]; ok {
 				res := struct{ Album *Album }{}
 				if err := json.Unmarshal(*value, &res); err != nil {
@@ -145,7 +145,7 @@ func unmarshallExpansions(uris *URIs, exp map[string]*json.RawMessage) (map[stri
 				}
 				ret[name] = res.Album
 			}
-		case "Node":
+		case "Node", "ParentNode":
 			if value, ok := exp[u]; ok {
 				res := struct{ Node *Node }{}
 				if err := json.Unmarshal(*value, &res); err != nil {

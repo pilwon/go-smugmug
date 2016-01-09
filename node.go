@@ -99,10 +99,14 @@ func (c *NodesGetCall) Do() (*NodesGetResponse, error) {
 	}
 	for name, v := range exp {
 		switch name {
+		case "Album":
+			ret.Album = v.(*Album)
 		case "ChildNodes":
 			ret.ChildNodes = v.([]*Node)
 		case "HighlightImage":
 			ret.HighlightImage = v.(*Image)
+		case "ParentNode":
+			ret.ParentNode = v.(*Node)
 		case "ParentNodes":
 			ret.ParentNodes = v.([]*Node)
 		case "User":
@@ -115,11 +119,13 @@ func (c *NodesGetCall) Do() (*NodesGetResponse, error) {
 type NodesGetResponse struct {
 	Node *Node
 
+	Album      *Album
 	ChildNodes []*Node
 	// FolderByID *FolderByID // Deprecated
 	HighlightImage *Image
 	// MoveNodes      *MoveNodes
 	// NodeGrants     *NodeGrants
+	ParentNode  *Node
 	ParentNodes []*Node
 	User        *User
 
