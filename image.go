@@ -177,7 +177,7 @@ type ImageDownload struct {
 type ImageMetadata struct {
 	Altitude               string  `json:",omitempty"`
 	AltitudeReference      string  `json:",omitempty"`
-	Aperture               float64 `json:",omitempty"`
+	Aperture               float32 `json:",omitempty"`
 	AudioCodec             string  `json:",omitempty"`
 	Author                 string  `json:",omitempty"`
 	AuthorTitle            string  `json:",omitempty"`
@@ -201,7 +201,7 @@ type ImageMetadata struct {
 	DateTimeCreated        string  `json:",omitempty"` // *time.Time
 	DateTimeModified       string  `json:",omitempty"` // *time.Time
 	DepthOfField           string  `json:",omitempty"`
-	DigitalZoomRatio       float64 `json:",omitempty"`
+	DigitalZoomRatio       float32 `json:",omitempty"`
 	Duration               string  `json:",omitempty"`
 	Exposure               string  `json:",omitempty"`
 	ExposureCompensation   string  `json:",omitempty"`
@@ -216,19 +216,19 @@ type ImageMetadata struct {
 	HyperfocalDistance     string  `json:",omitempty"`
 	ISO                    int     `json:",omitempty"`
 	Keywords               string  `json:",omitempty"`
-	Latitude               float64 `json:",omitempty"`
+	Latitude               float32 `json:",omitempty"`
 	LatitudeReference      string  `json:",omitempty"`
 	Lens                   string  `json:",omitempty"`
 	LensSerialNumber       string  `json:",omitempty"`
 	LightSource            string  `json:",omitempty"`
-	Longitude              float64 `json:",omitempty"`
+	Longitude              float32 `json:",omitempty"`
 	LongitudeReference     string  `json:",omitempty"`
 	Make                   string  `json:",omitempty"`
 	Metering               string  `json:",omitempty"`
 	MicroDateTimeCreated   string  `json:",omitempty"` // *time.Time
 	MicroDateTimeDigitized string  `json:",omitempty"` // *time.Time
 	Model                  string  `json:",omitempty"`
-	NormalizedLightValue   float64 `json:",omitempty"`
+	NormalizedLightValue   float32 `json:",omitempty"`
 	Rating                 string  `json:",omitempty"`
 	Saturation             string  `json:",omitempty"`
 	ScaleFactor            string  `json:",omitempty"`
@@ -258,7 +258,7 @@ type ImageMetadata struct {
 
 type CatalogSkuPrice struct {
 	Currency string  `json:",omitempty"`
-	Price    float64 `json:",omitempty"`
+	Price    float32 `json:",omitempty"`
 
 	ResponseLevel  string `json:",omitempty"`
 	URI            string `json:"Uri,omitempty"`

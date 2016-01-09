@@ -71,7 +71,7 @@ type ServiceResponse struct {
 	LocatorType    string
 	Timing         struct {
 		Total struct {
-			time    float64
+			time    float32
 			cycles  int
 			objects int
 		}
