@@ -45,11 +45,10 @@ type Service struct {
 	BasePath  string // API endpoint base URL
 	UserAgent string // optional additional User-Agent fragment
 
-	Albums  *AlbumsService
-	Folders *FoldersService
-	Images  *ImagesService
-	Nodes   *NodesService
-	Users   *UsersService
+	Albums *AlbumsService
+	Images *ImagesService
+	Nodes  *NodesService
+	Users  *UsersService
 }
 
 func (s *Service) setHeaders(req *http.Request) {
@@ -90,7 +89,6 @@ func New(client *http.Client) (*Service, error) {
 	}
 	s := &Service{client: client, BasePath: basePath}
 	s.Albums = NewAlbumsService(s)
-	s.Folders = NewFoldersService(s)
 	s.Images = NewImagesService(s)
 	s.Nodes = NewNodesService(s)
 	s.Users = NewUsersService(s)
