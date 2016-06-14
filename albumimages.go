@@ -5,7 +5,6 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
-	"fmt"
 	"strconv"
 )
 
@@ -83,8 +82,7 @@ func (c *AlbumImagesGetCall) Do() (*AlbumImagesGetResponse, error) {
 	if err := json.NewDecoder(res.Body).Decode(&albumsRes); err != nil {
 		return nil, err
 	}
-	ServiceResponse := albumsRes.Response
-	fmt.Println(ServiceResponse.Pages.Count)
+
 	ret := &AlbumImagesGetResponse{
 		Images: albumsRes.Response.AlbumImage,
 		Pages: albumsRes.Response.Pages,
