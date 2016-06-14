@@ -124,6 +124,35 @@ type AlbumsGetResponse struct {
 	ServerResponse `json:"-"`
 }
 
+func (c *AlbumsGetResponse) GetImages(s *Service) (images []*Image, err error) {
+	var uri URI = (*c.Album.URIs)["AlbumImages"]
+	var url string = parseURI(uri)
+	var start int = 1
+	var count int = 100
+
+	// loop for all pages
+	for true {
+		var res *AlbumImagesGetResponse
+		if res, err = s.AlbumImages.Get(url).Goto(start, count).Do(); err != nil {
+			return nil, err
+		}
+
+		images = append(images, res.Images...)
+
+		p := res.Pages
+		start = p.Start + p.Count
+		if start > p.Total {
+			return images, nil
+		}
+
+		/*var link string = res.ServerResponse.Header.Get("Link")
+		r := regexp.MustCompile("<(.*)>")
+		url = r.FindStringSubmatch(link)[1]*/
+	}
+
+	return nil, nil
+}
+
 type Album struct {
 	AlbumKey            string     `json:",omitempty"`
 	AllowDownloads      bool       `json:",omitempty"`

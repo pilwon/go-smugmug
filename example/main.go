@@ -19,6 +19,7 @@ func Test(s *smugmug.Service) error {
 	// res, err := s.Users.Get("cmac").Expand([]string{"Node"}).Do()
 	// res, err := s.Nodes.Get("zx4Fx").Expand([]string{"ChildNodes", "ParentNodes", "User"}).Do()
 	// res, err := s.Images.Get("SD5BL92-1").Expand([]string{"ImageAlbum", "ImageDownload", "ImageMetadata", "ImageOwner", "ImagePrices", "ImageSizeDetails", "ImageSizes", "LargestImage"}).Do()
+	// res, err := s.Albums.Get("rtV8Y").Do().GetImages()
 	res, err := s.Albums.Get("kQ3t8P").Expand([]string{"Node", "User"}).Do()
 	if err != nil {
 		return err
