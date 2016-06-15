@@ -49,6 +49,17 @@ type Service struct {
 	Images *ImagesService
 	Nodes  *NodesService
 	Users  *UsersService
+	AlbumImages  *AlbumImagesService
+}
+
+type Pages struct {
+	Total   int
+	Start   int
+	Count   int
+	RequestedCount   int
+	FirstPage   string
+	NextPage   string
+	LastPage   string
 }
 
 func (s *Service) setHeaders(req *http.Request) {
@@ -76,6 +87,7 @@ type ServiceResponse struct {
 			objects int
 		}
 	}
+	Pages        Pages
 }
 
 type ServerResponse struct {
@@ -92,6 +104,7 @@ func New(client *http.Client) (*Service, error) {
 	s.Images = NewImagesService(s)
 	s.Nodes = NewNodesService(s)
 	s.Users = NewUsersService(s)
+	s.AlbumImages = NewAlbumImagesService(s)
 	return s, nil
 }
 
